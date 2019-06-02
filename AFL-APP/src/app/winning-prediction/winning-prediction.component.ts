@@ -4,9 +4,7 @@ import { GamedataService } from 'src/app/gamedata.service';
 import { map, filter, scan } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { TipsDataService } from 'src/app/tips-data.service';
-import { GamedataService } from 'src/app/gamedata.service';
 import { TeamdataService } from 'src/app/teamdata.service';
-import { TeamsComponent } from '../teams.component';
 
 
 @Component({
