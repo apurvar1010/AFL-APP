@@ -25,6 +25,7 @@ export class WinningPredictionComponent implements OnInit {
   teamsM :any = [];
   teamName :string;
   hconf :any = [];
+  completed :boolean = false;
 
   setFavTeam(val){
     this.fav = val;

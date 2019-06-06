@@ -14,10 +14,11 @@ export class GeoLocationComponent implements OnInit {
   public latitude: number;
   public longitude: number;
   public zoom: number;
-  private map;
+  public map;
   public res;
+  public lat;
+  public long;
   geoarr :any = [];
-
 
   constructor(private getlocationService : GetLocationService) { }
 
@@ -27,13 +28,13 @@ export class GeoLocationComponent implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         this.zoom = 15;
-
       });
     }
+  }
 
-
-    //call the service
-
+  changeHome()
+  {
+    this.home=this.home;
   }
 
   findClosest(pt, results) {
@@ -50,8 +51,12 @@ export class GeoLocationComponent implements OnInit {
     {
 
       this.geoarr[i] = closest[i]['name'];
-      console.log(closest[i]['name']);
+      //console.log(closest[i]['name']);
     }
+    this.home = closest[0]['name'];
+    this.lat = closest[0]['geometry']['location'].lat();
+    this.long = closest[0]['geometry']['location'].lng();
+    //this.changeHome();
     //console.log(this.geoarr[1]['name']);
   }
 
@@ -60,18 +65,15 @@ export class GeoLocationComponent implements OnInit {
   }
 
   mapReady($event: any) {
-    //$event will be of type google.maps
     this.map = $event;
-    //this.findNearbyStadiums($event);
   }
 
   findStadium() {
-    this.findNearbyStadiums(this.map);
+  this.findNearbyStadiums(this.map);
   }
 
   findNearbyStadiums(map: any) {
     let placeService = new google.maps.places.PlacesService(map);
-
     var myLocation = {
       lat: this.latitude,
       lng: this.longitude

@@ -2,4 +2,8 @@
   <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
 </agm-map>
 <input value="Find Stadiums Near Me" autocorrect="off" autocapitalize="off" type="button" class="form-control" size="100" (click)="findStadium()">
-<!-- <h1 *ngFor="let arr of geoarr">asd as d{{arr['name']}}</h1> -->
+<div class="container">
+  <br><br>
+  <h2 title="Click to Get Directions" class="text-center" (click) = "changeHome()">Closest Stadium to your loction is : <br><a target="_blank" href="https://www.google.com/maps/place/@{{lat}},{{long}},17z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d{{lat}}!4d{{long}}">{{home}}</a></h2>
+  <br><br>
+</div>
